@@ -13,16 +13,12 @@ HTTPClient http;
 const int buttonPin1 = 4;  
 const int buttonPin2 = 5;  
 const int buttonPin3 = 2 ;  
-//const int buttonPin4 = 2;  
-//const int buttonPin5 = 1;  
-//const int buttonPin6 = 0;  
+
 
 int buttonState1 = 0;
 int buttonState2 = 0;
 int buttonState3 = 0;
-//int buttonState4 = 0;
-//int buttonState5 = 0;
-//int buttonState6 = 0;
+
  
 void configModeCallback(WiFiConnect *mWiFiConnect) {
   Serial.println("Entering Access Point");
@@ -58,9 +54,7 @@ void setup() {
 pinMode(buttonPin1, INPUT_PULLUP);
 pinMode(buttonPin2, INPUT_PULLUP);
 pinMode(buttonPin3, INPUT_PULLUP);
-//pinMode(buttonPin4, INPUT_PULLUP);
-//pinMode(buttonPin5, INPUT_PULLUP);
-//pinMode(buttonPin6, INPUT_PULLUP);
+
   delay (5000);
   startWiFi();
 
@@ -73,16 +67,11 @@ void loop() {
 buttonState1 = digitalRead(buttonPin1);
 buttonState2 = digitalRead(buttonPin2);
 buttonState3 = digitalRead(buttonPin3);
-//buttonState4 = digitalRead(buttonPin4);
-//buttonState5 = digitalRead(buttonPin5);
-//buttonState6 = digitalRead(buttonPin6);
+
 Serial.println("================== Button State ========================");
 Serial.println(buttonState1);
 Serial.println(buttonState2);
 Serial.println(buttonState3);
-//Serial.println(buttonState4);
-//Serial.println(buttonState5);
-//Serial.println(buttonState6);
 Serial.println("================== Button State ========================");
   
     if (WiFi.status() == WL_CONNECTED) {
@@ -100,7 +89,7 @@ Serial.println("================== Button State ========================");
 //  }
     }else{
 
-       wc.setAPName("IntralogicSmartButton");
+       wc.setAPName("SmartButton");
       if (!wc.autoConnect()) wc.startConfigurationPortal(AP_WAIT);
       
     }
