@@ -19,32 +19,27 @@ int buttonState1 = 0;
 int buttonState2 = 0;
 int buttonState3 = 0;
 
- 
+
+//============================================================= 
 void configModeCallback(WiFiConnect *mWiFiConnect) {
   Serial.println("Entering Access Point");
 }
 
 
+//===========================================================
 void startWiFi(boolean showParams = false) {
  
   wc.setDebug(true);
   wc.setAPCallback(configModeCallback);
 
-  //wc.resetSettings(); //helper to remove the stored wifi connection, comment out after first upload and re upload
-
-    /*
-       AP_NONE = Continue executing code
-       AP_LOOP = Trap in a continuous loop - Device is useless
-       AP_RESET = Restart the chip
-       AP_WAIT  = Trap in a continuous loop with captive portal until we have a working WiFi connection
-    */
-    if (!wc.autoConnect()) { // try to connect to wifi
+    if (!wc.autoConnect()) { 
       wc.setAPName("SmartButton");
-      wc.startConfigurationPortal(AP_WAIT);//if not connected show the configuration portal
+      wc.startConfigurationPortal(AP_WAIT);
     }
 }
 
 
+//========================================================
 void setup() {
   Serial.begin(115200);
   while (!Serial) {
@@ -60,6 +55,7 @@ pinMode(buttonPin3, INPUT_PULLUP);
 
 }
 
+//========================================================
 void loop() {
     delay(100);
 
@@ -75,8 +71,6 @@ Serial.println(buttonState3);
 Serial.println("================== Button State ========================");
   
     if (WiFi.status() == WL_CONNECTED) {
-
-
 
   // check if the pushbutton is pressed.
   // if it is, the buttonState is HIGH
